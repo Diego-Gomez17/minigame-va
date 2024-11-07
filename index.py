@@ -16,7 +16,7 @@ screen_height = monitor.height
 num_circles = 10
 circle_radius = 30
 score = 0
-circles = []
+circles = [] 
 
 # Inicialización de MediaPipe
 mp_hands = mp.solutions.hands
@@ -52,14 +52,14 @@ while cap.isOpened():
 
     # Convierte el marco de BGR a RGB
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    results = hands.process(rgb_frame)
+    results = hands.process(rgb_frame) 
 
     # Dibuja los círculos en la pantalla
     for (cx, cy) in circles:
         cv2.circle(frame, (cx, cy), circle_radius, (0, 255, 0), -1)
 
     # Si se detecta una mano
-    if results.multi_hand_landmarks:
+    if results.multi_hand_landmarks: 
         for hand_landmarks in results.multi_hand_landmarks:
             # Obtén las coordenadas de la punta del dedo índice
             index_finger = hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP]
@@ -104,3 +104,5 @@ root.withdraw()  # Oculta la ventana principal de tkinter
 messagebox.showinfo("Juego Terminado", f"Tu puntuación final: {score}")
 
 root.destroy()
+
+
