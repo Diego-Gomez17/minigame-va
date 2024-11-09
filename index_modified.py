@@ -8,8 +8,11 @@ from tkinter import messagebox
 
 # Obtén el tamaño de la pantalla principal
 monitor = get_monitors()[0]
-screen_width = monitor.width
-screen_height = monitor.height
+screen_width = 1280
+screen_height = 720
+print( screen_width,",",screen_height)
+
+
 
 # Configuración del juego
 circle_radius = 30
@@ -58,13 +61,13 @@ def main_game():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, screen_height)
     
     # Configura la ventana de OpenCV para pantalla completa
-    cv2.namedWindow("Juego de Letras", cv2.WND_PROP_FULLSCREEN)
-    cv2.setWindowProperty("Juego de Letras", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    cv2.namedWindow("Juego de Letras", cv2.WINDOW_NORMAL)
+    cv2.setWindowProperty("Juego de Letras", cv2.WINDOW_NORMAL, cv2.WINDOW_NORMAL)
 
     start_time = time.time()
     create_circle()  # Genera los círculos inicialmente
     
-    while time.time() - start_time < 10:  # Duración del juego (10 segundos)
+    while time.time() - start_time < 30:  # Duración del juego (10 segundos)
         ret, frame = cap.read()
         if not ret:
             break
@@ -104,7 +107,7 @@ def main_game():
             break
 
     # Mostrar puntaje si el tiempo termina
-    show_score()
+    #show_score()
     cap.release()
     cv2.destroyAllWindows()
 
